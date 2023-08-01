@@ -1,0 +1,432 @@
+use('db_campus_2023');
+db.sucursal.insertMany([
+    {
+        _id:1,
+        ID_SUCURDAL:1,
+        nombre: "a1",
+        direccion:"dire#12-1",
+        telefono:3211212212
+
+    },
+    {
+      _id: 2,
+      ID_SUCURSAL: 2,
+      nombre: "a2",
+      direccion: "dire2"
+    },
+    {
+      _id: 3,
+      ID_SUCURSAL: 3,
+      nombre: "a3",
+      direccion: "dire3"
+    },
+    {
+      _id: 4,
+      ID_SUCURSAL: 4,
+      nombre: "a4",
+      direccion: "dire4"
+    },
+    {
+      _id: 5,
+      ID_SUCURSAL: 5,
+      nombre: "a5",
+      direccion: "dire5"
+    }
+]
+);
+
+db.susursal_automovil.insertMany([
+    {
+        _id:1,
+        ID_SUCURSAL:1,
+        ID_automovil:1,
+        cantidad_disponible:1
+    },
+    {
+      _id: 2,
+      ID_SUCURSAL: 2,
+      ID_automovil: 2,
+      cantidad_disponible: 2
+    },
+    {
+      _id: 3,
+      ID_SUCURSAL: 3,
+      ID_automovil: 3,
+      cantidad_disponible: 3
+    },
+    {
+      _id: 4,
+      ID_SUCURSAL: 4,
+      ID_automovil: 4,
+      cantidad_disponible: 4
+    },
+    {
+      _id: 5,
+      ID_SUCURSAL: 5,
+      ID_automovil: 5,
+      cantidad_disponible: 5
+    }
+]);
+
+db.reserva.insertMany([
+    {
+        _id: 1,
+        ID_reserva:1,
+        ID_automovil:1,
+        fecha_reserva:"",
+        fecha_inicio:"",
+        fecha_fin:"",
+        estado:"qwerty"
+    },
+    {
+        _id: 2,
+        ID_reserva: 2,
+        ID_automovil: 2,
+        fecha_reserva: "2022-02-01",
+        fecha_inicio: "2022-02-02",
+        fecha_fin: "2022-02-03",
+        estado: "qwerty2"
+    },
+    {
+        _id: 3,
+        ID_reserva: 3,
+        ID_automovil: 3,
+        fecha_reserva: "2022-03-01",
+        fecha_inicio: "2022-03-02",
+        fecha_fin: "2022-03-03",
+        estado: "qwerty3"
+    },
+    {
+        _id: 4,
+        ID_reserva: 4,
+        ID_automovil: 4,
+        fecha_reserva: "2022-04-01",
+        fecha_inicio: "2022-04-02",
+        fecha_fin: "2022-04-03",
+        estado: "qwerty4"
+    },
+    {
+        _id: 5,
+        ID_reserva: 5,
+        ID_automovil: 5,
+        fecha_reserva: "2022-05-01",
+        fecha_inicio: "2022-05-02",
+        fecha_fin: "2022-05-03",
+        estado: "qwerty5"
+    }
+]);
+
+db.automovil.insertMany([
+    {
+        _id:1,
+        ID_automovil:1,
+        marca:"m1",
+        modelo:"mx123",
+        anio:2019,
+        tipo:"asdfg",
+        capacidad:4,
+        precio_diario:30000 
+
+    },
+
+    {
+        _id: 2,
+        ID_automovil: 2,
+        marca: "m2",
+        modelo: "mx124",
+        anio: 2020,
+        tipo: "asdfg",
+        capacidad: 4,
+        precio_diario: 31000
+    },
+    {
+        _id: 3,
+        ID_automovil: 3,
+        marca: "m3",
+        modelo: "mx125",
+        anio: 2021,
+        tipo: "asdfg",
+        capacidad: 4,
+        precio_diario: 32000
+    },
+    {
+        _id: 4,
+        ID_automovil: 4,
+        marca: "m4",
+        modelo: "mx126",
+        anio: 2022,
+        tipo: "asdfg",
+        capacidad: 4,
+        precio_diario: 33000
+    },
+    {
+        _id: 5,
+        ID_automovil: 5,
+        marca: "m5",
+        modelo: "mx127",
+        anio: 2023,
+        tipo: "asdfg",
+        capacidad: 4,
+        precio_diario: 34000
+    }
+]);
+
+db.cliente.insertMany([
+    {
+        _id:1,
+        ID_cliente:123,
+        nombre:"n1",
+        apellido:"ap1",
+        dni:"",
+        direccion:"",
+        telefono:3121212,
+        email:"awdsas@"
+    },
+    {
+        _id: 2,
+        ID_cliente: 124,
+        nombre: "n2",
+        apellido: "ap2",
+        dni: "dni2",
+        direccion: "dir2",
+        telefono: 3121213,
+        email: "email2@domain.com"
+    },
+    {
+        _id: 3,
+        ID_cliente: 125,
+        nombre: "n3",
+        apellido: "ap3",
+        dni: "dni3",
+        direccion: "dir3",
+        telefono: 3121214,
+        email: "email3@domain.com"
+    },
+    {
+        _id: 4,
+        ID_cliente: 126,
+        nombre: "n4",
+        apellido: "ap4",
+        dni: "dni4",
+        direccion: "dir4",
+        telefono: 3121215,
+        email: "email4@domain.com"
+    },
+    {
+        _id: 5,
+        ID_cliente: 127,
+        nombre: "n5",
+        apellido: "ap5",
+        dni: "dni5",
+        direccion: "dir5",
+        telefono: 3121216,
+        email: "email5@domain.com"
+    }
+]);
+
+
+use('db_campus_2023');
+db.alquiler.insertMany([
+    {
+        _id:1,
+        ID_alquiler:123213,
+        ID_cliente:22111,
+        ID_automovil:1,
+        fecha_inicio:"",
+        fecha_fin: "",
+        costo_total:30.000,
+        estado:"qqq"
+    },
+    {
+        _id: 2,
+        ID_alquiler: 123214,
+        ID_cliente: 22112,
+        ID_automovil: 2,
+        fecha_inicio: "2022-02-01",
+        fecha_fin: "2022-02-02",
+        costo_total: 31000,
+        estado: "qqq2"
+    },
+    {
+        _id: 3,
+        ID_alquiler: 123215,
+        ID_cliente: 22113,
+        ID_automovil: 3,
+        fecha_inicio: "2022-03-01",
+        fecha_fin: "2022-03-02",
+        costo_total: 32000,
+        estado: "qqq3"
+    },
+    {
+        _id: 4,
+        ID_alquiler: 123216,
+        ID_cliente: 22114,
+        ID_automovil: 4,
+        fecha_inicio: "2022-04-01",
+        fecha_fin: "2022-04-02",
+        costo_total: 33000,
+        estado: "qqq4"
+    },
+    {
+        _id: 5,
+        ID_alquiler: 123217,
+        ID_cliente: 22115,
+        ID_automovil: 5,
+        fecha_inicio: "2022-05-01",
+        fecha_fin: "2022-05-02",
+        costo_total: 34000,
+        estado: "qqq5"
+    }
+]);
+
+db.registro_devolcion.insertMany([
+    {
+        _id:1,
+        ID_registro:1232144,
+        ID_alquiler:123213,
+        ID_empleado:322323,
+        fecha_devolucion:"",
+        combustible_devuelto:"1.2",
+        kilometraje_devuelto:234,
+        monto_adicional:1.20020,
+    },
+    {
+        _id: 2,
+        ID_registro: 1232145,
+        ID_alquiler: 123214,
+        ID_empleado: 322324,
+        fecha_devolucion: "2022-02-01",
+        combustible_devuelto: "1.3",
+        kilometraje_devuelto: 235,
+        monto_adicional: 1300.20
+    },
+    {
+        _id: 3,
+        ID_registro: 1232146,
+        ID_alquiler: 123215,
+        ID_empleado: 322325,
+        fecha_devolucion: "2022-03-01",
+        combustible_devuelto: "1.4",
+        kilometraje_devuelto: 236,
+        monto_adicional: 1400.20
+    },
+    {
+        _id: 4,
+        ID_registro: 1232147,
+        ID_alquiler: 123216,
+        ID_empleado: 322326,
+        fecha_devolucion: "2022-04-01",
+        combustible_devuelto: "1.5",
+        kilometraje_devuelto: 237,
+        monto_adicional: 1500.20
+    },
+    {
+        _id: 5,
+        ID_registro: 1232148,
+        ID_alquiler: 123217,
+        ID_empleado: 322327,
+        fecha_devolucion: "2022-05-01",
+        combustible_devuelto: "1.6",
+        kilometraje_devuelto: 238,
+        monto_adicional: 1600.20
+    }
+]);
+
+db.registro_entrega.insertMany([
+    {
+        _id:1,
+        ID_registro:1232144,
+        ID_alquiler:123213,
+        ID_empleado:322323,
+        fecha_entrega:"",
+        combustible_entregado:"23.3",
+        kilometraje_entregado:212,
+
+    },
+    {
+        _id: 2,
+        ID_registro: 1232145,
+        ID_alquiler: 123214,
+        ID_empleado: 322324,
+        fecha_entrega: "2022-02-01",
+        combustible_entregado: "24.3",
+        kilometraje_entregado: 213
+    },
+    {
+        _id: 3,
+        ID_registro: 1232146,
+        ID_alquiler: 123215,
+        ID_empleado: 322325,
+        fecha_entrega: "2022-03-01",
+        combustible_entregado: "25.3",
+        kilometraje_entregado: 214
+    },
+    {
+        _id: 4,
+        ID_registro: 1232147,
+        ID_alquiler: 123216,
+        ID_empleado: 322326,
+        fecha_entrega: "2022-04-01",
+        combustible_entregado: "26.3",
+        kilometraje_entregado: 215
+    },
+    {
+        _id: 5,
+        ID_registro: 1232148,
+        ID_alquiler: 123217,
+        ID_empleado: 322327,
+        fecha_entrega: "2022-05-01",
+        combustible_entregado: "27.3",
+        kilometraje_entregado: 216
+    }
+]);
+
+db.empleado.insertMany([
+    {
+        _id:1,
+        nombre:"qawewq",
+        apellido:"aww",
+        dni:"dn1",
+        direccion:"d1",
+        telefono:312312,
+        cargo:""
+
+    },
+    {
+        _id: 2,
+        nombre: "qawewq2",
+        apellido: "aww2",
+        dni: "dn2",
+        direccion: "d2",
+        telefono: 312313,
+        cargo: "cargo2"
+    },
+    {
+        _id: 3,
+        nombre: "qawewq3",
+        apellido: "aww3",
+        dni: "dn3",
+        direccion: "d3",
+        telefono: 312314,
+        cargo: "cargo3"
+    },
+    {
+        _id: 4,
+        nombre: "qawewq4",
+        apellido: "aww4",
+        dni: "dn4",
+        direccion: "d4",
+        telefono: 312315,
+        cargo: "cargo4"
+    },
+    {
+        _id: 5,
+        nombre: "qawewq5",
+        apellido: "aww5",
+        dni: "dn5",
+        direccion: "d5",
+        telefono: 312316,
+        cargo: "cargo5"
+    }
+]);
+
