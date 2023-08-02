@@ -1,11 +1,11 @@
 use('db_campus_2023');
 db.sucursal.insertMany([
     {
-        _id:1,
-        ID_SUCURDAL:1,
+        _id: 1,
+        ID_SUCURDAL: 1,
         nombre: "a1",
-        direccion:"dire#12-1",
-        telefono:3211212212
+        direccion: "dire#12-1",
+        telefono: 3211212212
 
     },
     {
@@ -15,68 +15,68 @@ db.sucursal.insertMany([
         direccion: "dire2"
     },
     {
-      _id: 3,
-      ID_SUCURSAL: 3,
-      nombre: "a3",
-      direccion: "dire3"
+        _id: 3,
+        ID_SUCURSAL: 3,
+        nombre: "a3",
+        direccion: "dire3"
     },
     {
-      _id: 4,
-      ID_SUCURSAL: 4,
-      nombre: "a4",
-      direccion: "dire4"
+        _id: 4,
+        ID_SUCURSAL: 4,
+        nombre: "a4",
+        direccion: "dire4"
     },
     {
-      _id: 5,
-      ID_SUCURSAL: 5,
-      nombre: "a5",
-      direccion: "dire5"
+        _id: 5,
+        ID_SUCURSAL: 5,
+        nombre: "a5",
+        direccion: "dire5"
     }
 ]
 );
-
-db.susursal_automovil.insertMany([
+use('db_campus_2023');
+db.sucursal_automovil.insertMany([
     {
-        _id:1,
-        ID_SUCURSAL:1,
-        ID_automovil:1,
-        cantidad_disponible:1
+        _id: 1,
+        ID_SUCURSAL: 1,
+        ID_automovil: 1,
+        cantidad_disponible: 1
     },
     {
-      _id: 2,
-      ID_SUCURSAL: 2,
-      ID_automovil: 2,
-      cantidad_disponible: 2
+        _id: 2,
+        ID_SUCURSAL: 2,
+        ID_automovil: 2,
+        cantidad_disponible: 2
     },
     {
-      _id: 3,
-      ID_SUCURSAL: 3,
-      ID_automovil: 3,
-      cantidad_disponible: 3
+        _id: 3,
+        ID_SUCURSAL: 3,
+        ID_automovil: 3,
+        cantidad_disponible: 2
     },
     {
-      _id: 4,
-      ID_SUCURSAL: 4,
-      ID_automovil: 4,
-      cantidad_disponible: 4
+        _id: 4,
+        ID_SUCURSAL: 4,
+        ID_automovil: 4,
+        cantidad_disponible: 4
     },
     {
-      _id: 5,
-      ID_SUCURSAL: 5,
-      ID_automovil: 5,
-      cantidad_disponible: 5
+        _id: 5,
+        ID_SUCURSAL: 5,
+        ID_automovil: 5,
+        cantidad_disponible: 2
     }
 ]);
 
 db.reserva.insertMany([
     {
         _id: 1,
-        ID_reserva:1,
-        ID_automovil:1,
-        fecha_reserva:"",
-        fecha_inicio:"",
-        fecha_fin:"",
-        estado:"qwerty"
+        ID_reserva: 1,
+        ID_automovil: 1,
+        fecha_reserva: "",
+        fecha_inicio: "",
+        fecha_fin: "",
+        estado: "qwerty"
     },
     {
         _id: 2,
@@ -118,14 +118,14 @@ db.reserva.insertMany([
 
 db.automovil.insertMany([
     {
-        _id:1,
-        ID_automovil:1,
-        marca:"m1",
-        modelo:"mx123",
-        anio:2019,
-        tipo:"asdfg",
-        capacidad:4,
-        precio_diario:30000 
+        _id: 1,
+        ID_automovil: 1,
+        marca: "m1",
+        modelo: "mx123",
+        anio: 2019,
+        tipo: "asdfg",
+        capacidad: 4,
+        precio_diario: 30000
 
     },
 
@@ -173,14 +173,14 @@ db.automovil.insertMany([
 
 db.cliente.insertMany([
     {
-        _id:1,
-        ID_cliente:123,
-        nombre:"n1",
-        apellido:"ap1",
-        dni:"",
-        direccion:"",
-        telefono:3121212,
-        email:"awdsas@"
+        _id: 1,
+        ID_cliente: 123,
+        nombre: "n1",
+        apellido: "ap1",
+        dni: "",
+        direccion: "",
+        telefono: 3121212,
+        email: "awdsas@"
     },
     {
         _id: 2,
@@ -228,14 +228,14 @@ db.cliente.insertMany([
 use('db_campus_2023');
 db.alquiler.insertMany([
     {
-        _id:1,
-        ID_alquiler:123213,
-        ID_cliente:22111,
-        ID_automovil:1,
-        fecha_inicio:"",
+        _id: 1,
+        ID_alquiler: 123213,
+        ID_cliente: 22111,
+        ID_automovil: 1,
+        fecha_inicio: "",
         fecha_fin: "",
-        costo_total:30.000,
-        estado:"qqq"
+        costo_total: 30.000,
+        estado: "qqq"
     },
     {
         _id: 2,
@@ -281,14 +281,14 @@ db.alquiler.insertMany([
 
 db.registro_devolcion.insertMany([
     {
-        _id:1,
-        ID_registro:1232144,
-        ID_alquiler:123213,
-        ID_empleado:322323,
-        fecha_devolucion:"",
-        combustible_devuelto:"1.2",
-        kilometraje_devuelto:234,
-        monto_adicional:1.20020,
+        _id: 1,
+        ID_registro: 1232144,
+        ID_alquiler: 123213,
+        ID_empleado: 322323,
+        fecha_devolucion: "",
+        combustible_devuelto: "1.2",
+        kilometraje_devuelto: 234,
+        monto_adicional: 1.20020,
     },
     {
         _id: 2,
@@ -334,13 +334,13 @@ db.registro_devolcion.insertMany([
 
 db.registro_entrega.insertMany([
     {
-        _id:1,
-        ID_registro:1232144,
-        ID_alquiler:123213,
-        ID_empleado:322323,
-        fecha_entrega:"",
-        combustible_entregado:"23.3",
-        kilometraje_entregado:212,
+        _id: 1,
+        ID_registro: 1232144,
+        ID_alquiler: 123213,
+        ID_empleado: 322323,
+        fecha_entrega: "",
+        combustible_entregado: "23.3",
+        kilometraje_entregado: 212,
 
     },
     {
@@ -383,13 +383,13 @@ db.registro_entrega.insertMany([
 
 db.empleado.insertMany([
     {
-        _id:1,
-        nombre:"qawewq",
-        apellido:"aww",
-        dni:"dn1",
-        direccion:"d1",
-        telefono:312312,
-        cargo:""
+        _id: 1,
+        nombre: "qawewq",
+        apellido: "aww",
+        dni: "dn1",
+        direccion: "d1",
+        telefono: 312312,
+        cargo: ""
 
     },
     {
@@ -437,37 +437,37 @@ use('db_campus_2023');
 db.getCollection("cliente").aggregate([
     {
         $lookup: {
-          from: "alquiler",
-          localField: "_id",
-          foreignField: "ID_cliente",
-          as: "alquiler_fk"
+            from: "alquiler",
+            localField: "_id",
+            foreignField: "ID_cliente",
+            as: "alquiler_fk"
         }
     },
     {
         $project: {
-          "alquiler_fk._id":0,
-          "alquiler_fk.ID_cliente_id":0,
-          "alquiler_fk.ID_automovil_id":0,
-          "alquiler_fk.costo_total":0,
+            "alquiler_fk._id": 0,
+            "alquiler_fk.ID_cliente_id": 0,
+            "alquiler_fk.ID_automovil_id": 0,
+            "alquiler_fk.costo_total": 0,
         }
     },
     {
-        $unwind:"$alquiler_fk"
+        $unwind: "$alquiler_fk"
     },
     {
         $match: {
-          "alquiler_fk.estado":{$eq:"disponibles"}
+            "alquiler_fk.estado": { $eq: "disponible" }
         }
     },
     {
         $group: {
-          _id: "$_id",
-          ID_cliente:{$first:"$ID_cliente"},
-          nombre:{$first:"$nombre"},
-          apellido:{$first:"$apellido"},
-          dni:{$first:"$dni"},
-          telefono:{$first:"$telefono"},
-          alquiler_fk:{$push:"$alquiler_fk"}
+            _id: "$_id",
+            ID_cliente: { $first: "$ID_cliente" },
+            nombre: { $first: "$nombre" },
+            apellido: { $first: "$apellido" },
+            dni: { $first: "$dni" },
+            telefono: { $first: "$telefono" },
+            alquiler_fk: { $push: "$alquiler_fk" }
         }
     }
 ]);
@@ -475,25 +475,45 @@ db.getCollection("cliente").aggregate([
 
 /* 6 */
 use('db_campus_2023');
-db.alquiler.find( { ID_alquiler: { $eq: 123213 } } )
+db.alquiler.find({ ID_alquiler: { $eq: 123213 } })
 
 /* 7 */
 use('db_campus_2023');
-db.empleado.find({cargo: { $eq:"vendedor"}});
+db.empleado.find({ cargo: { $eq: "vendedor" } });
 
 /* 8 */
 use('db_campus_2023');
-db.sucursal_automovil.find({ID_SUCURSAL:{$eq:2}});
+db.sucursal_automovil.find();
 
+/* 9 */
+use('db_campus_2023');
+db.alquiler.find({ ID_alquiler: { $eq: 123214 } });
 
-db.sucursal.aggregate([
-    {
-      $group: {
-        _id: null, 
-        total: { 
-          $sum: "$cantidad" 
-        }
-      }
-    }
-  ])
-  
+/* 10 */
+use('db_campus_2023');
+db.cliente.find({ dni: { $eq: 'dni2' } });
+
+/* 11 */
+use('db_campus_2023');
+db.getCollection('automovil').find({
+    capacidad: { $gt: 5 }
+});
+
+/* 12 */
+use('db_campus_2023');
+db.getCollection('alquiler').find({
+    fecha_inicio: { $gt: "2022-04-01 " }
+});
+
+/* 13 */
+use('db_campus_2023');
+db.getCollection('reserva').find({
+    ID_cliente: { $eq: 125 }
+});
+
+/* 14 */
+use('db_campus_2023');
+db.getCollection('empleado').find({ $or: [{ cargo:"asistente"}, { cargo:"gerente"} ]});
+
+/* 15 */
+
