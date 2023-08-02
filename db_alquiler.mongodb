@@ -9,10 +9,10 @@ db.sucursal.insertMany([
 
     },
     {
-      _id: 2,
-      ID_SUCURSAL: 2,
-      nombre: "a2",
-      direccion: "dire2"
+        _id: 2,
+        ID_SUCURSAL: 2,
+        nombre: "a2",
+        direccion: "dire2"
     },
     {
       _id: 3,
@@ -430,3 +430,70 @@ db.empleado.insertMany([
     }
 ]);
 
+use('db_campus_2023');
+db.cliente.find();
+
+use('db_campus_2023');
+db.getCollection("cliente").aggregate([
+    {
+        $lookup: {
+          from: "alquiler",
+          localField: "_id",
+          foreignField: "ID_cliente",
+          as: "alquiler_fk"
+        }
+    },
+    {
+        $project: {
+          "alquiler_fk._id":0,
+          "alquiler_fk.ID_cliente_id":0,
+          "alquiler_fk.ID_automovil_id":0,
+          "alquiler_fk.costo_total":0,
+        }
+    },
+    {
+        $unwind:"$alquiler_fk"
+    },
+    {
+        $match: {
+          "alquiler_fk.estado":{$eq:"disponibles"}
+        }
+    },
+    {
+        $group: {
+          _id: "$_id",
+          ID_cliente:{$first:"$ID_cliente"},
+          nombre:{$first:"$nombre"},
+          apellido:{$first:"$apellido"},
+          dni:{$first:"$dni"},
+          telefono:{$first:"$telefono"},
+          alquiler_fk:{$push:"$alquiler_fk"}
+        }
+    }
+]);
+
+
+/* 6 */
+use('db_campus_2023');
+db.alquiler.find( { ID_alquiler: { $eq: 123213 } } )
+
+/* 7 */
+use('db_campus_2023');
+db.empleado.find({cargo: { $eq:"vendedor"}});
+
+/* 8 */
+use('db_campus_2023');
+db.sucursal_automovil.find({ID_SUCURSAL:{$eq:2}});
+
+
+db.sucursal.aggregate([
+    {
+      $group: {
+        _id: null, 
+        total: { 
+          $sum: "$cantidad" 
+        }
+      }
+    }
+  ])
+  
