@@ -516,4 +516,70 @@ use('db_campus_2023');
 db.getCollection('empleado').find({ $or: [{ cargo:"asistente"}, { cargo:"gerente"} ]});
 
 /* 15 */
+db.alquiler.aggregate([
+    {
+      $lookup: {
+        from: "cliente",
+        localField: "ID_cliente",
+        foreignField: "_id",
+        as: "alquiler",
+      },
+    },
+    {
+      $unwind: "$alquiler"
+    },
+    {
+      $group: {
+          _id: "$alquiler.nombre",
+          cantidad_alquiler: {$sum: 1}
+      }
+    },
+    {
+      $match: {
+          cantidad_alquiler: {$exists: true, $not: {$size: 0}}      
+      }
+    },
+  ]);
 
+
+  /* 16 */
+  use('db_campus_2023');
+db.automovil.find(
+  {
+    marca:"m1",
+  },
+  {
+    modelo:"mx123",
+  }
+);
+
+/* 17 */
+use('db_campus_2023');
+db.sucursal.find([
+    {
+        $lookup: {
+            from: "sucursal_automovil",
+            localField: "_id",
+            foreignField: "sucursal_id",
+            as: "sucursales"
+        }
+    },
+    {
+        $unwind: "$sucursales"
+    },
+    {
+        $group: {
+          _id: {
+            sucursal_id: "$_id",
+            nombre: "$nombre",
+            direccion: "$direccion"
+          },
+          cantidad_automoviles: { $sum: "$sucursales.cantidad_disponible"}
+        }
+    },
+    {
+        $project: {
+            cantidad_automoviles: 1,
+        }
+    }
+])
