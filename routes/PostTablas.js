@@ -1,55 +1,66 @@
 import { ObjectId } from 'mongodb';
-import { con } from '../db/atlas.js'; // Asegúrate de importar correctamente la conexión a la base de datos
-import { limitGrt } from '../limit/congif.js';
+import { con } from '../db/atlas.js';
+import { limitGrt } from '../limit/congif_sucursal_auto.js';
 import { Router } from 'express';
+import { limitSucursal } from '../limit/config_sucursal.js';
 const appCampus = Router();
 
-appCampus.post("/sautomovil", limitGrt(), async (req, res) => {
+
+appCampus.post('/sautomovil', limitGrt(), async (req, res) => {
    if (!req.body) {
       return res.status(400).json({ message: 'Invalid request body' });
    }
+   if(!req.rateLimit) return;
 
-   const { ID_sucursal, ID_automovil, Cantidad_disponible } = req.body;
+   try {
+      const client = await con(); // Obtén la conexión a la base de datos
+     // const db = await client.db(); // Obtiene la instancia de la base de datos
 
-   if (!ID_sucursal || !ID_automovil || !Cantidad_disponible) {
-      return res.status(400).json({ message: 'Missing required properties in request body' });
+      const collection = client.collection("sucursal_automovil");
+      const myobj = req.body;
+      const result = await collection.insertOne(myobj);
+      console.log("Documento insertado");
+      console.log(req.rateLimit);;
+      return res.json({
+         status: "success",
+         message: "Documento insertado",
+         document: result.ops 
+      });
+      
+      
+   } catch (error) {
+      console.log("Error al insertar documento:", error);
+      return res.status(500).json({ message: 'Error al insertar documento' });
    }
+});
 
-   if (con) {
-      const db = con.db('testx'); // Obtén la instancia de la base de datos desde la conexión
-      const collection = db.collection("sucursal_automovil");
+appCampus.post('/sucursal', limitSucursal(), async (req, res) => {
+   if (!req.body) {
+      return res.status(400).json({ message: 'Invalid request body' });
+   }
+   if(!req.rateLimit) return;
 
-      try {
-         await collection.insertOne({ ID_sucursal, ID_automovil, Cantidad_disponible });
-         return res.status(200).json({ message: 'Datos insertados correctamente' });
-      } catch (error) {
-         return res.status(500).json({ message: 'Error al insertar datos en la base de datos' });
-      }
-   } else {
-      return res.status(500).json({ message: 'No se pudo establecer la conexión a la base de datos' });
+   try {
+      const client = await con(); // Obtén la conexión a la base de datos
+     // const db = await client.db(); // Obtiene la instancia de la base de datos
+
+      const collection = client.collection("sucursal");
+      const myobj = req.body;
+      const result = await collection.insertOne(myobj);
+      console.log("Documento insertado");
+      console.log(req.rateLimit);;
+      return res.json({
+         status: "success",
+         message: "Documento insertado",
+         document: result.ops 
+      });
+      
+      
+   } catch (error) {
+      console.log("Error al insertar documento:", error);
+      return res.status(500).json({ message: 'Error al insertar documento' });
    }
 });
 
 
-appCampus.post('/insert', function (req, res) {
-   ObjectId.connect(con(), function(err, db) {
-     if (err) {
-       console.log("Error de conexión:", err);
-       res.status(500).send("Error de conexión a la base de datos");
-       return;
-     }
-     var dbo = db.db("testx");
-     var myobj = req.body;
-     dbo.collection("sucursal_automovil").insertOne(myobj)
-     .then(result => {
-       console.log("Documento insertado");
-       res.send({ status: "success", message: "Documento insertado", document: result.ops[0] });
-       db.close();
-     })
-     .catch(error => {
-       console.log("Error al insertar documento:", error);
-       res.status(500).send("Error al insertar documento");
-     });
-   });
- });
 export default appCampus;

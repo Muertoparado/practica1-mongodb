@@ -1,5 +1,5 @@
 
-use('testx');
+use('test');
 db.createCollection("sucursal_automovil", {
     validator: {
       $jsonSchema: {
@@ -23,6 +23,8 @@ db.createCollection("sucursal_automovil", {
       }
     }
   });
+
+  
 use("testx");  
 db.sucursal_automovil.insertMany([
     {
@@ -57,14 +59,36 @@ db.sucursal_automovil.insertMany([
     }
 ]);
 
-
-use('testx');
+/* db.createCollection("sucursal_automovil", {
+    validator: {
+      $jsonSchema: {
+        bsonType: "object",
+        required: ["ID_sucursal", "ID_automovil", "Cantidad_disponible"],
+        properties: {
+          ID_sucursal: {
+            bsonType: "int",
+            description: "Debe ser una cadena de texto"
+          },
+          ID_automovil: {
+            bsonType: "int",
+            description: "Debe ser una cadena de texto"
+          },
+          Cantidad_disponible: {
+            bsonType: "int",
+            minimum: 1,
+            description: "Debe ser un número entero mayor que cero"
+          }
+        }
+      }
+    }
+  }); */
+use('test');
 db.createCollection("sucursal", {
     validator: {
         $jsonSchema: {
             bsonType: "object",
+            required: ["ID_sucursal", "Nombre", "Direccion","Telefono"],
             properties: {
-            required: ["ID_sucursal", "Nombre", "Direccion", "Telefono"],
             ID_sucursal: {
             bsonType: "int",
                 description: "Debe ser numero"
