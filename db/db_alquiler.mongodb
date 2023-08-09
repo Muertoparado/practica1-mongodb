@@ -159,9 +159,44 @@ db.sucursal.insertMany([
         Telefono: "3211212212"
 
     }
-]
-);
-use('db_campus_2023');
+]);
+
+use('test');
+db.createCollection("automovil", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["ID_automovil", "Marca", "Modelo","Anio","Capacidad","Precio_diario"],
+            properties: {
+            ID_automovil: {
+            bsonType: "int",
+                description: "Debe ser numero"
+            },
+            Marca: {
+                bsonType: "string",
+                description: "Debe ser una cadena de texto"
+            },
+            Modelo: {
+                bsonType: "string",
+                description: "Debe ser una cadena de texto"
+            },
+            Anio: {
+                bsonType: "int",
+                description: "Debe ser un numero"
+            },
+            Capacidad: {
+                bsonType: "int",
+                description: "Debe ser numero"
+            },
+            Precio_diario: {
+                bsonType: "int",
+                description: "Debe ser un valor decimal"
+            }
+            
+        }
+    }
+    }
+});
 
 
 db.reserva.insertMany([
