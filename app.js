@@ -1,9 +1,11 @@
 import dotenv from 'dotenv';
 import express from 'express';
-import appCampus from './routes/campus.js';
+import bodyParser from 'body-parser';
+import appCampus from './routes/PostTablas.js';
 
 dotenv.config();
 const app=express();
+app.use(bodyParser.json());
 app.use("/alquiler",appCampus)
 
 

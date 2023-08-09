@@ -1,72 +1,144 @@
-use('db_campus_2023');
+
+use('testx');
+db.createCollection("sucursal_automovil", {
+    validator: {
+      $jsonSchema: {
+        bsonType: "object",
+        required: ["ID_sucursal", "ID_automovil", "Cantidad_disponible"],
+        properties: {
+          ID_sucursal: {
+            bsonType: "int",
+            description: "Debe ser una cadena de texto"
+          },
+          ID_automovil: {
+            bsonType: "int",
+            description: "Debe ser una cadena de texto"
+          },
+          Cantidad_disponible: {
+            bsonType: "int",
+            minimum: 1,
+            description: "Debe ser un número entero mayor que cero"
+          }
+        }
+      }
+    }
+  });
+use("testx");  
+db.sucursal_automovil.insertMany([
+    {
+        _id: 1,
+        ID_sucursal: 1,
+        ID_automovil: 1,
+        Cantidad_disponible: 1
+    },
+    {
+        _id: 2,
+        ID_sucursal: 2,
+        ID_automovil: 2,
+        Cantidad_disponible: 2
+    },
+    {
+        _id: 3,
+        ID_sucursal: 3,
+        ID_automovil: 3,
+        Cantidad_disponible: 2
+    },
+    {
+        _id: 4,
+        ID_sucursal: 4,
+        ID_automovil: 4,
+        Cantidad_disponible: 4
+    },
+    {
+        _id: 5,
+        ID_sucursal: 5,
+        ID_automovil: 5,
+        Cantidad_disponible: 2
+    }
+]);
+
+
+use('testx');
+db.createCollection("sucursal", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            properties: {
+            required: ["ID_sucursal", "Nombre", "Direccion", "Telefono"],
+            ID_sucursal: {
+            bsonType: "int",
+                description: "Debe ser numero"
+            },
+            Nombre: {
+                bsonType: "string",
+                description: "Debe ser una cadena de texto"
+            },
+            Direccion: {
+                bsonType: "string",
+                description: "Debe ser una cadena de texto"
+            },
+            Telefono: {
+                bsonType: "string",
+                description: "Debe ser una  cadena de texto"
+            }
+        }
+    }
+    }
+});
+
+use('testx');
+db.sucursal.insertOne({
+    _id: 7,
+        ID_sucursal: 6,
+        Nombre: "a65",
+        Direccion: "dire#12-1",
+        Telefono: 3211212212
+})
 db.sucursal.insertMany([
     {
         _id: 1,
-        ID_SUCURDAL: 1,
-        nombre: "a1",
-        direccion: "dire#12-1",
-        telefono: 3211212212
+        ID_sucursal: 1,
+        Nombre: "a1",
+        Direccion: "dire#12-1",
+        Telefono: "3211212212"
 
     },
     {
         _id: 2,
-        ID_SUCURSAL: 2,
-        nombre: "a2",
-        direccion: "dire2"
+        ID_sucursal: 2,
+        Nombre: "a2",
+        Direccion: "dire#12-1",
+        Telefono: "3211212212"
+
     },
     {
         _id: 3,
-        ID_SUCURSAL: 3,
-        nombre: "a3",
-        direccion: "dire3"
+        ID_sucursal: 3,
+        Nombre: "a3",
+        Direccion: "dire#12-1",
+        Telefono: "3211212212"
+
     },
     {
         _id: 4,
-        ID_SUCURSAL: 4,
-        nombre: "a4",
-        direccion: "dire4"
+        ID_sucursal: 4,
+        Nombre: "a4",
+        Direccion: "dire#12-1",
+        Telefono: "3211212212"
+
     },
     {
         _id: 5,
         ID_SUCURSAL: 5,
-        nombre: "a5",
-        direccion: "dire5"
+        Nombre: "a5",
+        Direccion: "dire#12-1",
+        Telefono: "3211212212"
+
     }
 ]
 );
 use('db_campus_2023');
-db.sucursal_automovil.insertMany([
-    {
-        _id: 1,
-        ID_SUCURSAL: 1,
-        ID_automovil: 1,
-        cantidad_disponible: 1
-    },
-    {
-        _id: 2,
-        ID_SUCURSAL: 2,
-        ID_automovil: 2,
-        cantidad_disponible: 2
-    },
-    {
-        _id: 3,
-        ID_SUCURSAL: 3,
-        ID_automovil: 3,
-        cantidad_disponible: 2
-    },
-    {
-        _id: 4,
-        ID_SUCURSAL: 4,
-        ID_automovil: 4,
-        cantidad_disponible: 4
-    },
-    {
-        _id: 5,
-        ID_SUCURSAL: 5,
-        ID_automovil: 5,
-        cantidad_disponible: 2
-    }
-]);
+
 
 db.reserva.insertMany([
     {
