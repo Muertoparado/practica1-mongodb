@@ -203,4 +203,3 @@ appCampus.post('/rdevolucion', limitDevolucion(), async (req, res) => {
 });
 
 export default appCampus;
-\
