@@ -6,6 +6,8 @@ import { limitSucursal } from '../limit/config_sucursal.js';
 import { limitAutomovil } from '../limit/config_autmovil.js';
 import {limitReserva} from '../limit/config_reserva.js' 
 import { limitCliente } from '../limit/config_cliente.js';
+import { limitAlquiler } from '../limit/config_alquiler.js';
+import { limitDevolucion } from '../limit/config_registro_dev.js';
 const appCampus = Router();
 
 
@@ -146,7 +148,7 @@ appCampus.post('/cliente', limitCliente(), async (req, res) => {
    
 });
 
-appCampus.post('/alquiler', limitCliente(), async (req, res) => {
+appCampus.post('/alquiler', limitAlquiler(), async (req, res) => {
    if (!req.body) {
       return res.status(400).json({ message: 'Invalid request body' });
    }
@@ -173,4 +175,32 @@ appCampus.post('/alquiler', limitCliente(), async (req, res) => {
    
 });
 
+appCampus.post('/rdevolucion', limitDevolucion(), async (req, res) => {
+   if (!req.body) {
+      return res.status(400).json({ message: 'Invalid request body' });
+   }
+   try {
+      const client = await con(); // Obtén la conexión a la base de datos
+     // const db = await client.db(); // Obtiene la instancia de la base de datos
+
+      const collection = client.collection("registro_devolucion");
+      const myobj = req.body;
+      const result = await collection.insertOne(myobj);
+      console.log("Documento insertado");
+      console.log(req.rateLimit);;
+      return res.json({
+         status: "success",
+         message: "Documento insertado",
+         document: result.ops 
+      });
+      
+      
+   } catch (error) {
+      console.log("Error al insertar documento:", error);
+      return res.status(500).json({ message: 'Error al insertar documento' });
+   }
+   
+});
+
 export default appCampus;
+\
