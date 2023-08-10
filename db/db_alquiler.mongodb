@@ -544,6 +544,51 @@ db.alquiler.insertMany([
     }
 ]);
 
+use('test');
+db.createCollection("registro_devolucion", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["ID_registro","ID_alquiler", "ID_empleado","Fecha_devolucion","Combustible_devuelto","Kilometraje_devuelto","Monto_adicional"],
+            properties: {
+                ID_registro: {
+                    bsonType: "int",
+                    description: "Debe ser numero",
+                    maxLength: 10
+                },
+                ID_alquiler: {
+                    bsonType: "int",
+                    description: "Debe ser numero",
+                    maxLength: 10
+                },
+                ID_empleado: {
+                    bsonType: "int",
+                    description: "Debe ser numero",
+                    maxLength: 10
+                },
+                Fecha_devolucion: {
+                    bsonType: "date",
+                    description: "Debe ser fecha",
+                },
+                Combustible_devuelto: {
+                    bsonType: "double",
+                    description: "Debe ser un número decimal",
+                },
+                Kilometraje_devuelto: {
+                    bsonType: "int",
+                    description: "Debe ser una numero ",
+                },
+                Monto_adicional: {
+                    bsonType: "double",
+                    description: "Debe ser un número decimal",
+                    maxLength: 15
+                }
+            }
+        }
+    }
+});
+
+
 db.registro_devolcion.insertMany([
     {
         _id: 1,
