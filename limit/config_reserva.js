@@ -1,12 +1,12 @@
 import rateLimit from 'express-rate-limit';
-export let limitAutomovil = () =>{
+export let limitReserva = () =>{
     return rateLimit({
         windowMs:30* 1000,
         max: 6,
         standardHeaders: true,
         legalcyHeaders: false,
         skip: (req,res)=>{
-            if(req.headers["content-length"]>150){
+            if(req.headers["content-length"]>250){
                 res.status(413).send({
                     status:413,
                     message: "el tamano es incorrecto"
